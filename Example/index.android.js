@@ -26,7 +26,7 @@ var Example = React.createClass({
   },
 
   showSnackbar: function() {
-    SnackbarAndroid.show('Hello!')
+    SnackbarAndroid.show('Hello World!')
   }
 });
 
