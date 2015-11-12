@@ -1,0 +1,10 @@
+{
+  "name": "react-native-android-snackbar",
+  "version": "0.0.1",
+  "private": true,
+  "files": [
+    "android/",
+    "index.android.js",
+    "index.ios.js"
+  ]
+}
