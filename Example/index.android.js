@@ -1,14 +1,14 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
 'use strict';
 
 var React = require('react-native');
+
+var SnackbarAndroid = require('react-native-android-snackbar');
+
 var {
   AppRegistry,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } = React;
 
@@ -16,17 +16,17 @@ var Example = React.createClass({
   render: function() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
+        <TouchableOpacity onPress={this.showSnackbar}>
+          <Text style={styles.label}>
+            Click to show Snackbar
+          </Text>
+        </TouchableOpacity>
       </View>
     );
+  },
+
+  showSnackbar: function() {
+    SnackbarAndroid.show('Hello!')
   }
 });
 
@@ -37,15 +37,9 @@ var styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
+  label: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });
 
