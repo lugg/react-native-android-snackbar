@@ -31,8 +31,6 @@ public class ReactSnackbarModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void show(String message) {
-    Log.d("ReactNative", "show message!");
-
     Snackbar snackbar = Snackbar.make(
       mRootView, message, Snackbar.LENGTH_SHORT);
     snackbar.show();
