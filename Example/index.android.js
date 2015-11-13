@@ -16,12 +16,12 @@ var Example = React.createClass({
   render: function() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => this.showSnackbar(SnackbarAndroid.SHORT)}>
+        <TouchableOpacity onPress={this.showDefaultSnackbar}>
           <Text style={styles.label}>
             Click to show short snackbar
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.showSnackbar(SnackbarAndroid.LONG)}>
+        <TouchableOpacity onPress={this.showLongSnackbar}>
           <Text style={styles.label}>
             Click to show longer snackbar
           </Text>
@@ -30,9 +30,14 @@ var Example = React.createClass({
     );
   },
 
-  showSnackbar: function(length) {
-    SnackbarAndroid.show('Hello World!', length)
-  }
+  showDefaultSnackbar: function() {
+    SnackbarAndroid.show('Hello World!');
+  },
+
+  showLongSnackbar: function() {
+    var msg = 'Hello world, this snackbar stays on screen longer';
+    SnackbarAndroid.show(msg, SnackbarAndroid.LONG);
+  },
 });
 
 var styles = StyleSheet.create({
