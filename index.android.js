@@ -7,5 +7,21 @@
 /**
  * This exposes the native SnackbarAndroid module in JS.
  */
+
 var { NativeModules } = require('react-native');
-module.exports = NativeModules.SnackbarAndroid;
+var NativeSnackbar = require('NativeModules').SnackbarAndroid;
+
+var SnackbarAndroid = {
+  SHORT: NativeSnackbar.SHORT,
+  LONG: NativeSnackbar.LONG,
+
+  show: function (
+    message: string,
+    duration: ?number
+  ): void {
+    if (duration == null) duration = this.SHORT;
+    NativeSnackbar.show(message, duration);
+  }
+};
+
+module.exports = SnackbarAndroid;
