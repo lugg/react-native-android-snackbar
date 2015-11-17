@@ -25,10 +25,10 @@ SnackbarAndroid.show('Hello World!', SnackbarAndroid.SHORT);
 1. Include this module in `android/settings.gradle`:
   
   ```
-  include ':ReactSnackbar',
+  include ':react-native-android-snackbar',
   include ':app'
 
-  project(':ReactSnackbar').projectDir = new File(rootProject.projectDir,
+  project(':react-native-android-snackbar').projectDir = new File(rootProject.projectDir,
     '../node_modules/react-native-android-snackbar/android')
   ```
 2. Add a dependency to your app build in `android/app/build.gradle`:
@@ -36,7 +36,7 @@ SnackbarAndroid.show('Hello World!', SnackbarAndroid.SHORT);
   ```
   dependencies {
       ...
-      compile project(':ReactSnackbar')
+      compile project(':react-native-android-snackbar')
   }
   ```
 3. Change your main activity to add a new package, in `android/app/src/main/.../MainActivity.java`:
