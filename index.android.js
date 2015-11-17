@@ -9,7 +9,7 @@
  */
 
 var { NativeModules } = require('react-native');
-var NativeSnackbar = require('NativeModules').SnackbarAndroid;
+var NativeSnackbar = NativeModules.SnackbarAndroid;
 
 var SnackbarAndroid = {
   SHORT: NativeSnackbar.SHORT,
