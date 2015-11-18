@@ -25,7 +25,7 @@ SnackbarAndroid.show('Hello World!', SnackbarAndroid.SHORT);
 1. Include this module in `android/settings.gradle`:
   
   ```
-  include ':react-native-android-snackbar',
+  include ':react-native-android-snackbar'
   include ':app'
 
   project(':react-native-android-snackbar').projectDir = new File(rootProject.projectDir,
