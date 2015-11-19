@@ -1,10 +1,14 @@
 {
   "name": "react-native-android-snackbar",
   "version": "0.0.1",
-  "private": true,
+  "description": "React Native widget to render a snackbar in Android apps",
+  "keywords": ["react-native", "android", "snackbar"],
+  "homepage": "https://github.com/luggg/react-native-android-snackbar",
+  "author": "Pedro Belo",
   "files": [
     "android/",
     "index.android.js",
     "index.ios.js"
-  ]
+  ],
+  "license": "MIT"
 }
