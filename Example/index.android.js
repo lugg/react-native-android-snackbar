@@ -2,7 +2,7 @@
 
 var React = require('react-native');
 
-var SnackbarAndroid = require('react-native-android-snackbar');
+var Snackbar = require('react-native-android-snackbar');
 
 var {
   AppRegistry,
@@ -31,12 +31,12 @@ var Example = React.createClass({
   },
 
   showDefaultSnackbar: function() {
-    SnackbarAndroid.show('Hello World!');
+    Snackbar.show('Hello World!');
   },
 
   showLongSnackbar: function() {
-    var msg = 'Hello world, this snackbar stays on screen longer';
-    SnackbarAndroid.show(msg, SnackbarAndroid.LONG);
+    var msg = 'This snackbar stays on screen for longer';
+    Snackbar.show(msg, Snackbar.LONG);
   },
 });
 
