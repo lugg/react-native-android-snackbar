@@ -19,20 +19,25 @@ var SnackbarAndroid = {
 
   show: function (
     message: string,
-    duration: ?number
+    options: {
+      duration: number,
+    }
   ): void {
-
     var hideOnClick = false;
 
-    if (duration == null) {
-      duration = this.SHORT;
+    if (options == null) {
+      options = {};
     }
-    else if (duration == this.UNTIL_CLICK) {
-      duration = this.INDEFINITE
+
+    if (options.duration == null) {
+      options.duration = this.SHORT;
+    }
+    else if (options.duration == this.UNTIL_CLICK) {
+      options.duration = this.INDEFINITE
       hideOnClick = true;
     }
 
-    this.snackbar = NativeSnackbar.show(message, duration, hideOnClick);
+    this.snackbar = NativeSnackbar.show(message, options.duration, hideOnClick);
   }
 };
 

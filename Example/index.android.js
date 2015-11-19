@@ -41,11 +41,11 @@ var Example = React.createClass({
 
   showSnackbarLong: function() {
     var msg = 'This snackbar stays on screen for longer';
-    Snackbar.show(msg, Snackbar.LONG);
+    Snackbar.show(msg, { duration: Snackbar.LONG });
   },
 
   showSnackbarIndefinite: function() {
-    Snackbar.show('Click to dismiss this one', Snackbar.UNTIL_CLICK);
+    Snackbar.show('Click to dismiss this one', { duration: Snackbar.UNTIL_CLICK });
   }
 });
 
