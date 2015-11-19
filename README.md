@@ -26,6 +26,9 @@ SnackbarAndroid.show('Hello World!', options);
 Available options:
 
 - `duration`: one of: `Snackbar.SHORT`, `Snackbar.LONG` or `Snackbar.UNTIL_CLICK`
+- `actionLabel`: text to show at the right of the snackbar
+- `actionColor`: color of the action text in the snackbar. Like `red` or `#FFCA00`
+- `actionCallback`: function to be evoked after the user clicks the snackbar. Keep in mind the snackbar will automatically close just before this function call
 
 
 [Check full example](Example/index.android.js).
