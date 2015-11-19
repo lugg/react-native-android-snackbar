@@ -8,8 +8,6 @@ Snackbar provides a lightweight feedback to users about an operation, such as sa
 
 Fore more info please refer to the [Google design spec on Snackbars](https://www.google.com/design/spec/components/snackbars-toasts.html#).
 
-Currently only supports simple notifications without action/callback.
-
 
 ## Usage
 
