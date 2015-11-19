@@ -44,8 +44,11 @@ public class ReactSnackbarModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public Snackbar show(String message, int length, boolean hideOnClick) {
+  public Snackbar show(String message, int length, boolean hideOnClick, int color) {
     final Snackbar snackbar = Snackbar.make(mRootView, message, length);
+
+    snackbar.setActionTextColor(color);
+
     snackbar.show();
 
     if (hideOnClick) {

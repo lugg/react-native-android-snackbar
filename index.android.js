@@ -8,8 +8,8 @@
  * This exposes the native SnackbarAndroid module in JS.
  */
 
-var { NativeModules } = require('react-native');
-var NativeSnackbar = NativeModules.SnackbarAndroid;
+var React = require('react-native');
+var NativeSnackbar = React.NativeModules.SnackbarAndroid;
 
 var SnackbarAndroid = {
   SHORT:       NativeSnackbar.SHORT,
@@ -21,6 +21,7 @@ var SnackbarAndroid = {
     message: string,
     options: {
       duration: number,
+      actionColor: string,
     }
   ): void {
     var hideOnClick = false;
@@ -37,7 +38,12 @@ var SnackbarAndroid = {
       hideOnClick = true;
     }
 
-    this.snackbar = NativeSnackbar.show(message, options.duration, hideOnClick);
+    if (options.actionColor == null) {
+      options.actionColor = '#EEFF41';
+    }
+    var color = React.processColor(options.actionColor);
+
+    this.snackbar = NativeSnackbar.show(message, options.duration, hideOnClick, color);
   }
 };
 

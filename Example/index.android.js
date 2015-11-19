@@ -31,6 +31,11 @@ var Example = React.createClass({
             Click to show permanent snackbar
           </Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={this.showSnackbarCustomAction}>
+          <Text style={styles.label}>
+            Click to show snackbar with custom action
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   },
@@ -46,6 +51,12 @@ var Example = React.createClass({
 
   showSnackbarIndefinite: function() {
     Snackbar.show('Click to dismiss this one', { duration: Snackbar.UNTIL_CLICK });
+  },
+
+  showSnackbarCustomAction: function() {
+    Snackbar.show('This has a custom action:', {
+      actionColor: '#FFCA00',
+    });
   }
 });
 
