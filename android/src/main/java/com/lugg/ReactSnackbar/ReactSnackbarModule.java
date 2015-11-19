@@ -20,8 +20,9 @@ import java.util.HashMap;
 public class ReactSnackbarModule extends ReactContextBaseJavaModule {
   private View mRootView = null;
 
-  private static final String LENGTH_SHORT_KEY = "SHORT";
-  private static final String LENGTH_LONG_KEY = "LONG";
+  private static final String LENGTH_SHORT = "SHORT";
+  private static final String LENGTH_LONG = "LONG";
+  private static final String LENGTH_INDEFINITE = "INDEFINITE";
 
   public ReactSnackbarModule(ReactApplicationContext reactContext, View rootView) {
     super(reactContext);
@@ -36,15 +37,25 @@ public class ReactSnackbarModule extends ReactContextBaseJavaModule {
   @Override
   public Map<String, Object> getConstants() {
     final Map<String, Object> constants = new HashMap<>();
-    constants.put(LENGTH_SHORT_KEY, Snackbar.LENGTH_SHORT);
-    constants.put(LENGTH_LONG_KEY, Snackbar.LENGTH_LONG);
+    constants.put(LENGTH_SHORT, Snackbar.LENGTH_SHORT);
+    constants.put(LENGTH_LONG, Snackbar.LENGTH_LONG);
+    constants.put(LENGTH_INDEFINITE, Snackbar.LENGTH_INDEFINITE);
     return constants;
   }
 
   @ReactMethod
-  public void show(String message, int length) {
-    Snackbar snackbar = Snackbar.make(
-      mRootView, message, length);
+  public Snackbar show(String message, int length, boolean hideOnClick) {
+    final Snackbar snackbar = Snackbar.make(mRootView, message, length);
     snackbar.show();
+
+    if (hideOnClick) {
+      snackbar.setAction("Dismiss", new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          snackbar.dismiss();
+        }
+      });
+    }
+    return snackbar;
   }
 }

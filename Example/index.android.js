@@ -16,28 +16,37 @@ var Example = React.createClass({
   render: function() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={this.showDefaultSnackbar}>
+        <TouchableOpacity onPress={this.showSnackbarDefault}>
           <Text style={styles.label}>
             Click to show short snackbar
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={this.showLongSnackbar}>
+        <TouchableOpacity onPress={this.showSnackbarLong}>
           <Text style={styles.label}>
             Click to show longer snackbar
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.showSnackbarIndefinite}>
+          <Text style={styles.label}>
+            Click to show permanent snackbar
           </Text>
         </TouchableOpacity>
       </View>
     );
   },
 
-  showDefaultSnackbar: function() {
+  showSnackbarDefault: function() {
     Snackbar.show('Hello World!');
   },
 
-  showLongSnackbar: function() {
+  showSnackbarLong: function() {
     var msg = 'This snackbar stays on screen for longer';
     Snackbar.show(msg, Snackbar.LONG);
   },
+
+  showSnackbarIndefinite: function() {
+    Snackbar.show('Click to dismiss this one', Snackbar.UNTIL_CLICK);
+  }
 });
 
 var styles = StyleSheet.create({
