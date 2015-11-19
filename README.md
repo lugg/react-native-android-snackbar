@@ -11,11 +11,22 @@ Currently only supports simple notifications without action/callback.
 
 ## Usage
 
-```
-var SnackbarAndroid = require('react-native-android-snackbar');
+Require it:
 
-SnackbarAndroid.show('Hello World!', SnackbarAndroid.SHORT);
+```js
+var Snackbar = require('react-native-android-snackbar');
 ```
+
+Then call:
+
+```
+SnackbarAndroid.show('Hello World!', options);
+```
+
+Available options:
+
+- `duration`: one of: `Snackbar.SHORT`, `Snackbar.LONG` or `Snackbar.UNTIL_CLICK`
+
 
 [Check full example](Example/index.android.js).
 
