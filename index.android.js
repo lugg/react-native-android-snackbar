@@ -22,6 +22,8 @@ var SnackbarAndroid = {
     options: {
       duration: number,
       actionColor: string,
+      actionLabel: string,
+      actionCallback: Function,
     }
   ): void {
     var hideOnClick = false;
@@ -34,7 +36,7 @@ var SnackbarAndroid = {
       options.duration = this.SHORT;
     }
     else if (options.duration == this.UNTIL_CLICK) {
-      options.duration = this.INDEFINITE
+      options.duration = this.INDEFINITE;
       hideOnClick = true;
     }
 
@@ -43,7 +45,20 @@ var SnackbarAndroid = {
     }
     var color = React.processColor(options.actionColor);
 
-    this.snackbar = NativeSnackbar.show(message, options.duration, hideOnClick, color);
+    var label, callback;
+    if (options.actionLabel && options.actionCallback) {
+      options.duration = this.INDEFINITE;
+      label = options.actionLabel;
+      callback = options.actionCallback;
+    }
+
+    this.snackbar = NativeSnackbar.show(
+      message,
+      options.duration,
+      hideOnClick,
+      color,
+      label,
+      callback);
   }
 };
 

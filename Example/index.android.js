@@ -56,6 +56,8 @@ var Example = React.createClass({
   showSnackbarCustomAction: function() {
     Snackbar.show('This has a custom action:', {
       actionColor: '#FFCA00',
+      actionLabel: 'CLICK',
+      actionCallback: (() => Snackbar.show('Nice click!'))
     });
   }
 });
@@ -63,14 +65,12 @@ var Example = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
+    padding: 16,
   },
   label: {
-    fontSize: 20,
-    textAlign: 'center',
-    marginBottom: 24
+    fontSize: 18,
+    marginBottom: 16,
   },
 });
 

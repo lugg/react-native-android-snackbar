@@ -44,12 +44,10 @@ public class ReactSnackbarModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public Snackbar show(String message, int length, boolean hideOnClick, int color) {
+  public void show(String message, int length, boolean hideOnClick, int color, String actionLabel, final Callback actionCallback) {
     final Snackbar snackbar = Snackbar.make(mRootView, message, length);
 
     snackbar.setActionTextColor(color);
-
-    snackbar.show();
 
     if (hideOnClick) {
       snackbar.setAction("Dismiss", new View.OnClickListener() {
@@ -59,6 +57,16 @@ public class ReactSnackbarModule extends ReactContextBaseJavaModule {
         }
       });
     }
-    return snackbar;
+    else if (actionLabel != null && actionCallback != null) {
+      snackbar.setAction(actionLabel, new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          snackbar.dismiss();
+          actionCallback.invoke();
+        }
+      });
+    }
+
+    snackbar.show();
   }
 }
