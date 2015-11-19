@@ -20,7 +20,7 @@ var Snackbar = require('react-native-android-snackbar');
 Then call:
 
 ```
-SnackbarAndroid.show('Hello World!', options);
+Snackbar.show('Hello World!', options);
 ```
 
 Available options:
