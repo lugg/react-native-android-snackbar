@@ -2,6 +2,8 @@
 
 Expose the [Snackbar android widget](http://developer.android.com/reference/android/support/design/widget/Snackbar.html) for react-native apps.
 
+![Snackbar demo](/Example/snackbar.gif?raw=true)
+
 Snackbar provides a lightweight feedback to users about an operation, such as saving a form or deleting a message. They are similar to Toasts, but are a bit more prominent and customizable.
 
 Fore more info please refer to the [Google design spec on Snackbars](https://www.google.com/design/spec/components/snackbars-toasts.html#).
