@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 
+import android.graphics.Color;
+import android.widget.TextView;
 import android.support.design.widget.Snackbar;
 
 import com.facebook.react.common.ReactConstants;
@@ -23,6 +25,9 @@ public class ReactSnackbarModule extends ReactContextBaseJavaModule {
   private static final String LENGTH_SHORT = "SHORT";
   private static final String LENGTH_LONG = "LONG";
   private static final String LENGTH_INDEFINITE = "INDEFINITE";
+
+  private static final int COLOR_BACKGROUND = -13487566; // #323232
+  private static final int COLOR_TEXT = Color.WHITE;
 
   public ReactSnackbarModule(ReactApplicationContext reactContext, View rootView) {
     super(reactContext);
@@ -44,10 +49,17 @@ public class ReactSnackbarModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void show(String message, int length, boolean hideOnClick, int color, String actionLabel, final Callback actionCallback) {
+  public void show(String message, int length, boolean hideOnClick, int actionColor, String actionLabel, final Callback actionCallback) {
     final Snackbar snackbar = Snackbar.make(mRootView, message, length);
 
-    snackbar.setActionTextColor(color);
+    // enforce snackbar background/text color so it doesn't inherit from styles.xml
+    View snackbarView = snackbar.getView();
+    snackbarView.setBackgroundColor(COLOR_BACKGROUND);
+    TextView textView = (TextView) snackbarView.findViewById(R.id.snackbar_text);
+    textView.setTextColor(COLOR_TEXT);
+
+    // set a custom action color
+    snackbar.setActionTextColor(actionColor);
 
     if (hideOnClick) {
       snackbar.setAction("Dismiss", new View.OnClickListener() {
