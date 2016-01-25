@@ -14,7 +14,7 @@ Fore more info please refer to the [Google design spec on Snackbars](https://www
 Require it:
 
 ```js
-var Snackbar = require('react-native-android-snackbar');
+import Snackbar from 'react-native-android-snackbar';
 ```
 
 Then call:
@@ -30,52 +30,42 @@ Available options:
 - `actionColor`: color of the action text in the snackbar. Like `red` or `#FFCA00`
 - `actionCallback`: function to be evoked after the user clicks the snackbar. Keep in mind the snackbar will automatically close just before this function call
 
-
 [Check full example](Example/index.android.js).
 
 
 ## Setup
 
 1. Include this module in `android/settings.gradle`:
-  
-  ```
-  include ':react-native-android-snackbar'
-  include ':app'
 
-  project(':react-native-android-snackbar').projectDir = new File(rootProject.projectDir,
-    '../node_modules/react-native-android-snackbar/android')
-  ```
+```
+include ':react-native-android-snackbar', ':app'
+
+project(':react-native-android-snackbar').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-android-snackbar/android')
+```
+
 2. Add a dependency to your app build in `android/app/build.gradle`:
-  
-  ```
-  dependencies {
-      ...
-      compile project(':react-native-android-snackbar')
-  }
-  ```
+
+```
+dependencies {
+   ...
+   compile project(':react-native-android-snackbar')
+}
+```
+
 3. Change your main activity to add a new package, in `android/app/src/main/.../MainActivity.java`:
+
+```java
+import com.lugg.ReactSnackbar.ReactSnackbarPackage; // Add new import
+
+public class MainActivity extends ReactActivity {
+  ...
   
-  ```java
-  import com.lugg.ReactSnackbar.ReactSnackbarPackage; // Add new import
-
-  public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
-
-      private ReactInstanceManager mReactInstanceManager;
-      private ReactRootView mReactRootView;
-
-      @Override
-      protected void onCreate(Bundle savedInstanceState) {
-          super.onCreate(savedInstanceState);
-          mReactRootView = new ReactRootView(this);
-
-          mReactInstanceManager = ReactInstanceManager.builder()
-                  .setApplication(getApplication())
-                  .setBundleAssetName("index.android.bundle")
-                  .setJSMainModuleName("index.android")
-                  .addPackage(new MainReactPackage())
-                  .addPackage(new ReactSnackbarPackage(mReactRootView)) // add the package here
-                  .setUseDeveloperSupport(BuildConfig.DEBUG)
-                  .setInitialLifecycleState(LifecycleState.RESUMED)
-                  .build();
-  ```
-
+  @Override
+  protected List<ReactPackage> getPackages() {
+    return Arrays.<ReactPackage>asList(
+      new MainReactPackage(),
+      new ReactSnackbarPackage(this) // Add the package here
+    );
+  }
+}
+```
