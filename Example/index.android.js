@@ -1,19 +1,18 @@
 'use strict';
 
-var React = require('react-native');
-
-var Snackbar = require('react-native-android-snackbar');
-
-var {
+import React, {
   AppRegistry,
+  Component,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
-} = React;
+  View
+} from 'react-native';
 
-var Example = React.createClass({
-  render: function() {
+import Snackbar from 'react-native-android-snackbar';
+
+class Example extends Component {
+  render() {
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={this.showSnackbarDefault}>
@@ -38,36 +37,35 @@ var Example = React.createClass({
         </TouchableOpacity>
       </View>
     );
-  },
+  }
 
-  showSnackbarDefault: function() {
+  showSnackbarDefault() {
     Snackbar.show('Hello World!');
-  },
+  }
 
-  showSnackbarLong: function() {
-    var msg = 'This snackbar stays on screen for longer';
-    Snackbar.show(msg, { duration: Snackbar.LONG });
-  },
+  showSnackbarLong() {
+    Snackbar.show('This snackbar stays on screen for longer', { duration: Snackbar.LONG });
+  }
 
-  showSnackbarIndefinite: function() {
+  showSnackbarIndefinite() {
     Snackbar.show('Click to dismiss this one', { duration: Snackbar.UNTIL_CLICK });
-  },
+  }
 
-  showSnackbarCustomAction: function() {
+  showSnackbarCustomAction() {
     Snackbar.show('This has a custom action:', {
       actionColor: '#FFCA00',
       actionLabel: 'CLICK',
       actionCallback: (() => Snackbar.show('Nice click!'))
     });
   }
-});
+}
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
     justifyContent: 'center',
-    padding: 16,
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
   label: {
     fontSize: 18,
