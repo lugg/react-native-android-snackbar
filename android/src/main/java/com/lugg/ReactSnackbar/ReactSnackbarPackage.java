@@ -22,7 +22,7 @@ public class ReactSnackbarPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         return Arrays.<NativeModule>asList(
-            new ReactSnackbarModule(reactContext, mRootView)
+            new ReactSnackbarModule(reactContext, mActivity)
         );
     }
 
