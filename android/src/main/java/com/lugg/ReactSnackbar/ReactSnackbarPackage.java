@@ -1,6 +1,6 @@
 package com.lugg.ReactSnackbar;
 
-import com.lugg.ReactSnackbar.ReactSnackbarModule;
+import android.app.Activity;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
@@ -12,15 +12,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import android.view.View;
-import android.util.Log;
-
 public class ReactSnackbarPackage implements ReactPackage {
-    private View mRootView = null;
+    private Activity mActivity = null;
 
-    // hold a reference to the root view
-    public ReactSnackbarPackage(View rootView) {
-        mRootView = rootView;
+    public ReactSnackbarPackage(Activity activity) {
+        mActivity = activity;
     }
 
     @Override

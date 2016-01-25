@@ -1,14 +1,11 @@
 package com.lugg.ReactSnackbar;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.View;
-
 import android.graphics.Color;
 import android.widget.TextView;
 import android.support.design.widget.Snackbar;
 
-import com.facebook.react.common.ReactConstants;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -29,9 +26,9 @@ public class ReactSnackbarModule extends ReactContextBaseJavaModule {
   private static final int COLOR_BACKGROUND = -13487566; // #323232
   private static final int COLOR_TEXT = Color.WHITE;
 
-  public ReactSnackbarModule(ReactApplicationContext reactContext, View rootView) {
+  public ReactSnackbarModule(ReactApplicationContext reactContext, Activity activity) {
     super(reactContext);
-    mRootView = rootView;
+    mRootView = activity.getWindow().getDecorView().getRootView();
   }
 
   @Override
