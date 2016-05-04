@@ -32,6 +32,11 @@ Available options:
 
 [Check full example](Example/index.android.js).
 
+To dismiss the currently active Snackbar early (for example, when changing scenes in your app), you can call:
+
+```js
+Snackbar.dismiss();
+```
 
 ## Setup
 
