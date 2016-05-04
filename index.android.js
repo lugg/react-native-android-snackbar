@@ -32,6 +32,16 @@ var SnackbarAndroid = {
       options = {};
     }
 
+    var label, callback;
+    if (options.actionLabel && options.actionCallback) {
+      if (options.duration == null) {
+        options.duration = this.INDEFINITE;
+      }
+
+      label = options.actionLabel;
+      callback = options.actionCallback;
+    }
+
     if (options.duration == null) {
       options.duration = this.SHORT;
     }
@@ -44,13 +54,6 @@ var SnackbarAndroid = {
       options.actionColor = '#EEFF41';
     }
     var color = React.processColor(options.actionColor);
-
-    var label, callback;
-    if (options.actionLabel && options.actionCallback) {
-      options.duration = this.INDEFINITE;
-      label = options.actionLabel;
-      callback = options.actionCallback;
-    }
 
     this.snackbar = NativeSnackbar.show(
       message,
