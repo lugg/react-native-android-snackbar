@@ -18,6 +18,7 @@ import java.util.HashMap;
 
 public class ReactSnackbarModule extends ReactContextBaseJavaModule {
   private View mRootView = null;
+  private Snackbar mSnackbar = null;
 
   private static final String LENGTH_SHORT = "SHORT";
   private static final String LENGTH_LONG = "LONG";
@@ -47,35 +48,45 @@ public class ReactSnackbarModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void show(String message, int length, boolean hideOnClick, int actionColor, String actionLabel, final Callback actionCallback) {
-    final Snackbar snackbar = Snackbar.make(mRootView, message, length);
+    mSnackbar = Snackbar.make(mRootView, message, length);
 
     // enforce snackbar background/text color so it doesn't inherit from styles.xml
-    View snackbarView = snackbar.getView();
+    View snackbarView = mSnackbar.getView();
     snackbarView.setBackgroundColor(COLOR_BACKGROUND);
     TextView textView = (TextView) snackbarView.findViewById(R.id.snackbar_text);
     textView.setTextColor(COLOR_TEXT);
 
     // set a custom action color
-    snackbar.setActionTextColor(actionColor);
+    mSnackbar.setActionTextColor(actionColor);
 
     if (hideOnClick) {
-      snackbar.setAction("Dismiss", new View.OnClickListener() {
+      mSnackbar.setAction("Dismiss", new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-          snackbar.dismiss();
+          mSnackbar.dismiss();
         }
       });
     }
     else if (actionLabel != null && actionCallback != null) {
-      snackbar.setAction(actionLabel, new View.OnClickListener() {
+      mSnackbar.setAction(actionLabel, new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-          snackbar.dismiss();
+          mSnackbar.dismiss();
           actionCallback.invoke();
         }
       });
     }
 
-    snackbar.show();
+    mSnackbar.show();
+  }
+
+  @ReactMethod
+  public void dismiss() {
+    if (mSnackbar == null) {
+      return;
+    }
+
+    mSnackbar.dismiss();
+    mSnackbar = null;
   }
 }
