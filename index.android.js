@@ -62,6 +62,10 @@ var SnackbarAndroid = {
       color,
       label,
       callback);
+  },
+
+  dismiss: function(): void {
+    NativeSnackbar.dismiss();
   }
 };
 
