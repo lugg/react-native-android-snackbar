@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class ReactSnackbarModule extends ReactContextBaseJavaModule {
-  private View mRootView = null;
+  private Activity mActivity = null;
   private Snackbar mSnackbar = null;
 
   private static final String LENGTH_SHORT = "SHORT";
@@ -29,7 +29,7 @@ public class ReactSnackbarModule extends ReactContextBaseJavaModule {
 
   public ReactSnackbarModule(ReactApplicationContext reactContext, Activity activity) {
     super(reactContext);
-    mRootView = activity.getWindow().getDecorView().getRootView();
+    mActivity = activity;
   }
 
   @Override
@@ -48,7 +48,8 @@ public class ReactSnackbarModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void show(String message, int length, boolean hideOnClick, int actionColor, String actionLabel, final Callback actionCallback) {
-    mSnackbar = Snackbar.make(mRootView, message, length);
+    View view = mActivity.findViewById(android.R.id.content);
+    mSnackbar = Snackbar.make(view, message, length);
 
     // enforce snackbar background/text color so it doesn't inherit from styles.xml
     View snackbarView = mSnackbar.getView();
