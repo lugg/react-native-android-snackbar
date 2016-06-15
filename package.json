@@ -1,6 +1,6 @@
 {
   "name": "react-native-android-snackbar",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "React Native widget to render a snackbar in Android apps",
   "keywords": ["react-native", "android", "snackbar"],
   "homepage": "https://github.com/luggg/react-native-android-snackbar",
