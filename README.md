@@ -57,19 +57,19 @@ dependencies {
 }
 ```
 
-3. Change your main activity to add a new package, in `android/app/src/main/.../MainActivity.java`:
+3. Change your main application to add a new package, in `android/app/src/main/.../MainApplication.java`:
 
 ```java
 import com.lugg.ReactSnackbar.ReactSnackbarPackage; // Add new import
 
-public class MainActivity extends ReactActivity {
+public class MainApplication extends Application implements ReactApplication {
   ...
   
   @Override
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
       new MainReactPackage(),
-      new ReactSnackbarPackage(this) // Add the package here
+      new ReactSnackbarPackage() // Add the package here
     );
   }
 }
