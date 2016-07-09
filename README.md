@@ -69,7 +69,7 @@ public class MainActivity extends ReactActivity {
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
       new MainReactPackage(),
-      new ReactSnackbarPackage(this) // Add the package here
+      new ReactSnackbarPackage() // Add the package here
     );
   }
 }

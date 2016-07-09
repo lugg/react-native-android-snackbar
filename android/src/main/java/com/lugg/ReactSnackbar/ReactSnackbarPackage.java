@@ -15,14 +15,17 @@ import java.util.List;
 public class ReactSnackbarPackage implements ReactPackage {
     private Activity mActivity = null;
 
+    public ReactSnackbarPackage() {
+    }
+
     public ReactSnackbarPackage(Activity activity) {
-        mActivity = activity;
+        this();
     }
 
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         return Arrays.<NativeModule>asList(
-            new ReactSnackbarModule(reactContext, mActivity)
+            new ReactSnackbarModule(reactContext)
         );
     }
 
