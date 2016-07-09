@@ -17,7 +17,6 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class ReactSnackbarModule extends ReactContextBaseJavaModule {
-  private Activity mActivity = null;
   private Snackbar mSnackbar = null;
 
   private static final String LENGTH_SHORT = "SHORT";
@@ -27,9 +26,8 @@ public class ReactSnackbarModule extends ReactContextBaseJavaModule {
   private static final int COLOR_BACKGROUND = -13487566; // #323232
   private static final int COLOR_TEXT = Color.WHITE;
 
-  public ReactSnackbarModule(ReactApplicationContext reactContext, Activity activity) {
+  public ReactSnackbarModule(ReactApplicationContext reactContext) {
     super(reactContext);
-    mActivity = activity;
   }
 
   @Override
@@ -48,7 +46,7 @@ public class ReactSnackbarModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void show(String message, int length, boolean hideOnClick, int actionColor, String actionLabel, final Callback actionCallback) {
-    View view = mActivity.findViewById(android.R.id.content);
+    View view = getCurrentActivity().findViewById(android.R.id.content);
     mSnackbar = Snackbar.make(view, message, length);
 
     // enforce snackbar background/text color so it doesn't inherit from styles.xml
