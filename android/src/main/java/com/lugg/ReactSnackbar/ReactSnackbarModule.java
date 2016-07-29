@@ -84,7 +84,7 @@ public class ReactSnackbarModule extends ReactContextBaseJavaModule {
       public void run() {
 
         // If Snackbar is not already dismissed, fire EVENT_HIDE
-        if (mSnackbar.isShown()) {
+        if (mSnackbar != null && mSnackbar.isShown()) {
           ReactSnackbarModule.this.sendEvent(EVENT_HIDE, null);
         }
       }
