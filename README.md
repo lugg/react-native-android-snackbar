@@ -43,9 +43,9 @@ Snackbar.dismiss();
 1. Include this module in `android/settings.gradle`:
 
 ```
-include ':react-native-android-snackbar', ':app'
-
+include ':react-native-android-snackbar'
 project(':react-native-android-snackbar').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-android-snackbar/android')
+include ':app'
 ```
 
 2. Add a dependency to your app build in `android/app/build.gradle`:
