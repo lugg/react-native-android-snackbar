@@ -53,7 +53,7 @@ include ':app'
 ```
 dependencies {
    ...
-   compile project(':react-native-android-snackbar')
+   implementation project(':react-native-android-snackbar')
 }
 ```
 
